@@ -9,12 +9,16 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/auth/signers"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/auth/validators"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/auth/verifiers"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/consts"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/core/auth/signers"
+	"github.com/cedarwu/wechatpay-go/core/auth/validators"
+	"github.com/cedarwu/wechatpay-go/core/auth/verifiers"
+	"github.com/cedarwu/wechatpay-go/core/consts"
+	"github.com/cedarwu/wechatpay-go/utils"
+)
+
+const (
+	aeadAesGcmAlgorithm = "AEAD_AES_256_GCM"
 )
 
 // isSameCertificateMap Check if two CertificateMaps stores same certificates.
@@ -95,10 +99,17 @@ func (d *CertificateDownloader) ExportAll(_ context.Context) map[string]string {
 func (d *CertificateDownloader) decryptCertificate(
 	_ context.Context, encryptCertificate *encryptCertificate,
 ) (string, error) {
-	plaintext, err := utils.DecryptAES256GCM(
-		d.mchAPIv3Key, *encryptCertificate.AssociatedData,
-		*encryptCertificate.Nonce, *encryptCertificate.Ciphertext,
-	)
+	var plaintext string
+	var err error
+
+	if *encryptCertificate.Algorithm == aeadAesGcmAlgorithm {
+		plaintext, err = utils.DecryptAES256GCM(
+			d.mchAPIv3Key, *encryptCertificate.AssociatedData,
+			*encryptCertificate.Nonce, *encryptCertificate.Ciphertext,
+		)
+	} else {
+		return "", fmt.Errorf("unsupported certificate encryption algorithm: %s", *encryptCertificate.Algorithm)
+	}
 	if err != nil {
 		return "", fmt.Errorf("decrypt downloaded certificate failed: %v", err)
 	}
@@ -124,7 +135,7 @@ func (d *CertificateDownloader) updateCertificates(
 }
 
 func (d *CertificateDownloader) performDownloading(ctx context.Context) (*downloadCertificatesResponse, error) {
-	result, err := d.client.Get(ctx, consts.WechatPayAPIServer+"/v3/certificates")
+	result, err := d.client.Get(ctx, consts.WechatPayAPIServer+"/v3/certificates?algorithm_type=2")
 	if err != nil {
 		return nil, err
 	}

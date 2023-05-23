@@ -17,9 +17,9 @@ import (
 	neturl "net/url"
 	"strings"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/consts"
-	"github.com/wechatpay-apiv3/wechatpay-go/services"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/core/consts"
+	"github.com/cedarwu/wechatpay-go/services"
 )
 
 type OrdersApiService services.Service

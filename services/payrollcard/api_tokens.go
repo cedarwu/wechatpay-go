@@ -16,9 +16,9 @@ import (
 	nethttp "net/http"
 	neturl "net/url"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/consts"
-	"github.com/wechatpay-apiv3/wechatpay-go/services"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/core/consts"
+	"github.com/cedarwu/wechatpay-go/services"
 )
 
 type TokensApiService services.Service

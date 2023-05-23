@@ -6,8 +6,8 @@ import (
 	"context"
 	"io"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/services"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/services"
 )
 
 // MarketingImageUploadResponse 图片上传API（营销专用）返回结果

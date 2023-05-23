@@ -5,14 +5,15 @@ package credentials
 import (
 	"context"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/assert"
+
 	"github.com/agiledragon/gomonkey"
+	"github.com/cedarwu/wechatpay-go/core/auth"
+	"github.com/cedarwu/wechatpay-go/utils"
 	"github.com/stretchr/testify/require"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/auth"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
 )
 
 type mockSigner struct {

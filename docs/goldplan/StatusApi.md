@@ -26,9 +26,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/goldplan"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/services/goldplan"
+	"github.com/cedarwu/wechatpay-go/utils"
 )
 
 func main() {
@@ -110,9 +110,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/goldplan"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/services/goldplan"
+	"github.com/cedarwu/wechatpay-go/utils"
 )
 
 func main() {

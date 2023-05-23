@@ -14,10 +14,10 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/transferbatch"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/cedarwu/wechatpay-go/core"
+	"github.com/cedarwu/wechatpay-go/core/option"
+	"github.com/cedarwu/wechatpay-go/services/transferbatch"
+	"github.com/cedarwu/wechatpay-go/utils"
 )
 
 func ExampleTransferBatchApiService_GetTransferBatchByNo() {
